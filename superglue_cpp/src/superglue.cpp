@@ -55,7 +55,7 @@ auto SuperGlue::logSinkhornIterations(torch::Tensor &Z, torch::Tensor &log_mu, t
     return Z + u.unsqueeze(2) + v.unsqueeze(1);
 }
 
-auto SuperGlue::logOptimalTransport(const torch::Tensor &&scores, torch::Tensor &&alpha, const int iters)
+auto SuperGlue::logOptimalTransport(const torch::Tensor &scores, torch::Tensor &alpha, const int iters)
 {
     int b = scores.size(0);
     int m = scores.size(1);

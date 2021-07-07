@@ -44,7 +44,8 @@ private:
      * @param iters 
      * @return torch::Tensor 
      */
-    auto logOptimalTransport(const torch::Tensor &&scores, torch::Tensor &&alpha, const int iters);
+
+    auto logOptimalTransport(const torch::Tensor &scores, torch::Tensor &alpha, const int iters);
     auto arangeLike(const torch::Tensor &x, const int dim);
 
 private:

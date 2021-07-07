@@ -329,7 +329,7 @@ class SuperGlue(nn.Module):
 
 if __name__ == "__main__":
     config = {
-        'weights': "indoor",
+        'weights': "outdoor",
         'sinkhorn_iterations': 20,
         'match_threshold': 0.2,
     }

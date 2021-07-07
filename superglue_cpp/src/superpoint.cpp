@@ -38,7 +38,7 @@ auto SuperPoint::removeBorders(torch::Tensor &keypoints, torch::Tensor &scores, 
     // std::cout << keypoints.index(mask.squeeze().t()).sizes() << std::endl;
     // std::cout << scores.index(mask.squeeze().t()).sizes() << std::endl;
 
-    return std::make_pair(keypoints.index(mask.squeeze()), scores.index(mask.squeeze()));
+    return std::make_pair(keypoints.index({mask.squeeze()}), scores.index({mask.squeeze()}));
 }
 
 auto SuperPoint::calcKeyPoints(torch::Tensor &&score)
@@ -61,7 +61,7 @@ auto SuperPoint::calcKeyPoints(torch::Tensor &&score)
     {
         auto [ss, indices] = torch::topk(scores, max_keypoints_, 0);
         scores = ss;
-        keypoints = keypoints.index(indices);
+        keypoints = keypoints.index({indices});
     }
     keypoints = torch::flip(keypoints, {1});
     return std::make_pair(keypoints, scores);
